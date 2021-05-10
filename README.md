@@ -1,5 +1,37 @@
-* `GET /api/v1/forms`: lists the available form templates (perhaps returning the human-readable name & ID), also will describe each of the forms' fields (value type, validation, and perhaps WHO may set its value (Client or Broker or Both?), etc)
-* `POST /api/v1/application`: takes a form template and creates an application (an instance of the form), returns an ID of the application, could possibly also return the form's field descriptors
-* `PUT /api/v1/application/:id`: updates the application with data from the Client or Broker (unsure how to discern), requires validation; replaces whatever is there already (PUT semantics)
-* `POST /api/v1/application/:id/complete`: allows the Broker to mark the application as completed, no more mutations are allowed
-* `GET /api/v1/application/:id/pdf`: on the fly generates a PDF of the application data and marshals it to the caller
+# `shepherd-backend`
+
+## Running the Program
+
+Assuming you have a go environment, you can run this by doing
+
+```
+go run cmd/main.go
+```
+
+The application by default will seed the data store with 2 forms.
+
+By default it will run a server that listens on http://localhost:8080
+
+#### Changing Ports
+
+```
+go run cmd/main.go --port=3000
+```
+
+#### Enabling Auth
+
+For the sake of ease of testing this server, the cookie based auth is disabled until you opt in by providing the `--auth=true` flag:
+
+```
+go run cmd/main.go --auth=true
+```
+
+## Directories
+
+- `api`: contains all the HTTP/REST/Routing implementations
+- `auth`: contains a Middleware which looks for the X-Auth cookie to have a value of `"shepherd"`
+- `cmd`: contains the executable binary
+- `data`: contains data persistence drivers that implement the interface described in `data/interface.go`
+  - `data/mem`: contains an in memory implementation of the "database" interface
+  - `data/redis`: TODO: contains a redis implementation of the interface
+- `models`: describes the data entities used by this application, also describes their JSON serialization/de-serialization formats.
