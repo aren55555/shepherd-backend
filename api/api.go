@@ -12,6 +12,7 @@ const (
 
 	headerContentType = "Content-Type"
 	mimeJSON          = "application/json"
+	mimePDF           = "application/pdf"
 )
 
 func New(ds data.Store) *Handler {
@@ -29,6 +30,7 @@ func New(ds data.Store) *Handler {
 	r.HandlerFunc(http.MethodPost, "/api/v1/application", h.createApplication)
 	r.HandlerFunc(http.MethodPut, "/api/v1/application/:id", h.updateApplication)
 	r.HandlerFunc(http.MethodPost, "/api/v1/application/:id/complete", h.completeApplication)
+	r.HandlerFunc(http.MethodGet, "/api/v1/application/:id/pdf", h.getApplicationPDF)
 
 	return h
 }

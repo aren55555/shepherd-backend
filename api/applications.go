@@ -84,3 +84,22 @@ func (h *Handler) completeApplication(w http.ResponseWriter, r *http.Request) {
 	}
 	// OK!
 }
+
+func (h *Handler) getApplicationPDF(w http.ResponseWriter, r *http.Request) {
+	params := httprouter.ParamsFromContext(r.Context())
+	applicationID := params.ByName(paramID)
+
+	application := h.dataStore.GetApplicationBy(applicationID)
+	if application == nil || !application.IsComplete {
+		http.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
+		return
+	}
+
+	w.Header().Set(headerContentType, mimePDF)
+	pdf, err := application.PDF()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	pdf.Write(w)
+}
