@@ -1,0 +1,5 @@
+* `GET /api/v1/forms`: lists the available form templates (perhaps returning the human-readable name & ID), also will describe each of the forms' fields (value type, validation, and perhaps WHO may set its value (Client or Broker or Both?), etc)
+* `POST /api/v1/application`: takes a form template and creates an application (an instance of the form), returns an ID of the application, could possibly also return the form's field descriptors
+* `PUT /api/v1/application/:id`: updates the application with data from the Client or Broker (unsure how to discern), requires validation; replaces whatever is there already (PUT semantics)
+* `POST /api/v1/application/:id/complete`: allows the Broker to mark the application as completed, no more mutations are allowed
+* `GET /api/v1/application/:id/pdf`: on the fly generates a PDF of the application data and marshals it to the caller
