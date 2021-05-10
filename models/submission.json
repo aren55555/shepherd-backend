@@ -1,0 +1,16 @@
+{
+  "id": "form1",
+  "fieldsets": {
+    "company": {
+      "name": "Example Inc.",
+      "website": "https://example.com"
+    },
+    "project": {
+      "name": "Bridge Construction",
+      "address": "1600 Amphitheatre Pkwy."
+    }
+  },
+  "fields": {
+    "taxable": true
+  }
+}
