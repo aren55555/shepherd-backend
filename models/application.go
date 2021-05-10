@@ -1,16 +1,8 @@
 package models
 
-import "encoding/json"
-
 type Application struct {
-	ID                 string `json:"id"`
-	IsComplete         bool   `json:"is_completed"`
-	FormDefinitionJSON []byte `json:"-"`
-	FormInstanceJSON   []byte `json:"-"`
-}
-
-func (a *Application) Form() Form {
-	f := Form{}
-	json.Unmarshal(a.FormDefinitionJSON, &f)
-	return f
+	ID         string       `json:"id"`
+	IsComplete bool         `json:"is_completed"`
+	FormSchema Form         `json:"form_schema"`
+	FormData   FormInstance `json:"form_data"`
 }
