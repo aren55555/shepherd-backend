@@ -26,11 +26,11 @@ func New(ds data.Store) *Handler {
 	r.HandlerFunc(http.MethodGet, "/api/v1/forms", h.listAllForms)
 	r.HandlerFunc(http.MethodGet, "/api/v1/forms/:id", h.getForm)
 
-	r.HandlerFunc(http.MethodGet, "/api/v1/application/:id", h.getApplication)
-	r.HandlerFunc(http.MethodPost, "/api/v1/application", h.createApplication)
-	r.HandlerFunc(http.MethodPut, "/api/v1/application/:id", h.updateApplication)
-	r.HandlerFunc(http.MethodPost, "/api/v1/application/:id/complete", h.completeApplication)
-	r.HandlerFunc(http.MethodGet, "/api/v1/application/:id/pdf", h.getApplicationPDF)
+	r.HandlerFunc(http.MethodPost, "/api/v1/applications", h.createApplication)
+	r.HandlerFunc(http.MethodGet, "/api/v1/applications/:id", h.getApplication)
+	r.HandlerFunc(http.MethodPut, "/api/v1/applications/:id", h.updateApplication)
+	r.HandlerFunc(http.MethodPost, "/api/v1/applications/:id/complete", h.completeApplication)
+	r.HandlerFunc(http.MethodGet, "/api/v1/applications/:id/pdf", h.getApplicationPDF)
 
 	return h
 }

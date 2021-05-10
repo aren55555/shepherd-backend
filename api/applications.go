@@ -82,7 +82,8 @@ func (h *Handler) completeApplication(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	// OK!
+
+	w.WriteHeader(http.StatusNoContent)
 }
 
 func (h *Handler) getApplicationPDF(w http.ResponseWriter, r *http.Request) {
