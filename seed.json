@@ -1,0 +1,59 @@
+[
+  {
+    "id": "1",
+    "fieldsets": {
+      "company": {
+        "label": "Company Info",
+        "fields": {
+          "name": {
+            "label": "Name",
+            "type": "text",
+            "required": true
+          },
+          "website": {
+            "label": "Website",
+            "type": "url"
+          }
+        }
+      },
+      "project": {
+        "label": "Project Info",
+        "fields": {
+          "address": {
+            "label": "Address",
+            "type": "text"
+          },
+          "name": {
+            "label": "Name",
+            "type": "text"
+          }
+        }
+      }
+    },
+    "fields": {
+      "taxable": {
+        "label": "Taxable?",
+        "type": "select_one"
+      }
+    }
+  },
+  {
+    "id": "2",
+    "fieldsets": {
+      "company": {
+        "label": "Company Info",
+        "fields": {
+          "num_full_time": {
+            "label": "Number of Full-Time Employees",
+            "type": "number",
+            "required": true
+          },
+          "num_part_time": {
+            "label": "Number of Part-Time Employees",
+            "type": "url"
+          }
+        }
+      }
+    }
+  }
+]
